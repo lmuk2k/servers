@@ -29,3 +29,14 @@ Route::get('websites', function() {
 
     return View::make('websites')->with('websites', $websites);
 });
+
+// ===============================================
+// 404 ===========================================
+// ===============================================
+
+App::missing(function($exception) {
+
+    // shows an error page (app/views/error.blade.php)
+    // returns a page not found error
+    return Response::view('error', array(), 404);
+});
