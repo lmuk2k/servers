@@ -15,9 +15,9 @@
 // STATIC PAGES ==================================
 // ===============================================
 // show a static view for the home page (app/views/home.blade.php)
-Route::get('/', function() {
-    return View::make('home');
-});
+Route::get('/', array('as' => 'home', function() {
+        return View::make('home');
+    }));
 
 // about page (app/views/about.blade.php)
 Route::get('about', array('as' => 'about', function() {
@@ -44,10 +44,13 @@ Route::get('websites/{id?}', function($id = null) {
 // LOGIN SECTION =================================
 // ===============================================
 // show the login page
-Route::get('login', function() {
-    // show the login page (app/views/login.blade.php)
-    return View::make('login');
-});
+Route::get('login', array('uses' => 'HomeController@showLogin'));
+
+// process the login
+Route::post('login', array('uses' => 'HomeController@doLogin'));
+
+// process a logout request
+Route::post('logout', array('uses' => 'HomeController@doLogout'));
 
 // ===============================================
 // ADMIN SECTION =================================
