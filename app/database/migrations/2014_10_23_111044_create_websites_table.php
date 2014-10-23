@@ -16,10 +16,13 @@ class CreateWebsitesTable extends Migration {
             {
                 $table->increments('id');
                 $table->string('name');
+                $table->string('full_name')->nullable();
                 $table->string('url')->unique();
                 $table->boolean('production')->default(false);
-                $table->text('description');
-                $table->text('notes');
+                $table->text('description')->nullable();
+                $table->text('notes')->nullable();
+                $table->enum('language', array('.NET', 'PHP', 'Classic ASP', 'Static HTML', 'Other'))->default('.NET');
+                $table->enum('cms', array('Contribute', 'Wordpress', 'Sharepoint', 'Custom', 'None'))->default('None');
                 $table->timestamps();
             });
 	}
