@@ -70,6 +70,19 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
     Route::get('websites/create', function() {
         return View::make('admin.websites-create');
     });
+
+    Route::post('websites/create', function() {
+        // add the website to the database
+        // $post = new Post;
+        // $post->title = Input::get('title');
+        // more stuff here
+        // $post->save();
+        // create a success message
+        Session::flash('message', 'Successfully created website');
+
+        // redirect
+        return Redirect::to('admin/websites');
+    });
 });
 
 // ===============================================
