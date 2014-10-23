@@ -1,5 +1,7 @@
 @extends('layout')
 
 @section('content')
-    Websites!
+    @foreach($websites as $website)
+        <p>{{ $website->name }}</p>
+    @endforeach
 @stop

@@ -18,5 +18,7 @@ Route::get('/', function()
 
 Route::get('websites', function()
 {
-    return View::make('websites');
+    $websites = Website::all();
+
+    return View::make('websites')->with('websites', $websites);
 });
