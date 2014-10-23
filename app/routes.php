@@ -24,10 +24,40 @@ Route::get('about', array('as' => 'about', function() {
         return View::make('about');
     }));
 
-Route::get('websites', function() {
-    $websites = Website::all();
+// ===============================================
+// Websites ====================================
+// ===============================================
+Route::get('websites/{id?}', function($id = null) {
+    // if a website ID was passed, use that
+    // if no ID, get all websites
+    if ($id > 0) {
+        $websites = Website::where('id', '=', $id);
+    }
+    else {
+        $websites = Website::all();
+    }
 
     return View::make('websites')->with('websites', $websites);
+});
+
+// ===============================================
+// ADMIN SECTION =================================
+// ===============================================
+Route::group(array('prefix' => 'admin'), function() {
+    // main page for the admin section (app/views/admin/dashboard.blade.php)
+    Route::get('/', function() {
+        return View::make('admin.dashboard');
+    });
+
+    // subpage for the websites found at /admin/websites (app/views/admin/websites.blade.php)
+    Route::get('websites', function() {
+        return View::make('admin.websites');
+    });
+
+    // subpage to create a website found at /admin/websites/create (app/views/admin/websites-create.blade.php)
+    Route::get('websites/create', function() {
+        return View::make('admin.websites-create');
+    });
 });
 
 // ===============================================
