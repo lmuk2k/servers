@@ -41,9 +41,18 @@ Route::get('websites/{id?}', function($id = null) {
 });
 
 // ===============================================
+// LOGIN SECTION =================================
+// ===============================================
+// show the login page
+Route::get('login', function() {
+    // show the login page (app/views/login.blade.php)
+    return View::make('login');
+});
+
+// ===============================================
 // ADMIN SECTION =================================
 // ===============================================
-Route::group(array('prefix' => 'admin'), function() {
+Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
     // main page for the admin section (app/views/admin/dashboard.blade.php)
     Route::get('/', function() {
         return View::make('admin.dashboard');
