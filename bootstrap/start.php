@@ -27,7 +27,7 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
 	'home' => array('home-desktop'),
-        'work' => array('work-vm')
+        'work' => array('NC-B8CA3A9F8CBF')
 
 ));
 
