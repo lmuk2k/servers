@@ -16,12 +16,12 @@
 // ===============================================
 // show a static view for the home page (app/views/home.blade.php)
 Route::get('/', array('as' => 'home', function() {
-        return View::make('home');
+        return View::make('pages.home');
     }));
 
 // about page (app/views/about.blade.php)
 Route::get('about', array('as' => 'about', function() {
-        return View::make('about');
+        return View::make('pages.about');
     }));
 
 // ===============================================
@@ -73,10 +73,10 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 
     Route::post('websites/create', function() {
         // add the website to the database
-        // $post = new Post;
-        // $post->title = Input::get('title');
+        //$website = new Website;
+        //$website->name = Input::get('name');
         // more stuff here
-        // $post->save();
+        // $website->save();
         // create a success message
         Session::flash('message', 'Successfully created website');
 

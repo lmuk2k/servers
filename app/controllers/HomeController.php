@@ -16,7 +16,7 @@ class HomeController extends BaseController {
 
     public function showLogin() {
         // show the form
-        return View::make('login');
+        return View::make('pages.login');
     }
 
     public function doLogin() {
@@ -52,7 +52,7 @@ class HomeController extends BaseController {
             else {
 
                 // validation not successful, send back to form	
-                return Redirect::to('login');
+                return Redirect::to('pages.login');
             }
         }
     }

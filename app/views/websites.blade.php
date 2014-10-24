@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.default')
 
 @section('content')
     @foreach($websites as $website)
