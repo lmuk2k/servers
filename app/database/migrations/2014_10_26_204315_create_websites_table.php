@@ -19,8 +19,9 @@ class CreateWebsitesTable extends Migration {
             $table->boolean('production')->default(false);
             $table->text('description')->nullable();
             $table->text('notes')->nullable();
-            $table->enum('language', array('.NET', 'PHP', 'Classic ASP', 'Static HTML', 'Other'))->default('.NET');
-            $table->enum('cms', array('Contribute', 'Wordpress', 'Sharepoint', 'Custom', 'None'))->default('None');
+            //$table->enum('language', array('.NET', 'PHP', 'Classic ASP', 'Static HTML', 'Other'))->default('.NET');
+            //$table->enum('cms', array('Contribute', 'Wordpress', 'Sharepoint', 'Custom', 'None'))->default('None');
+            $table->integer('server_id');
             $table->timestamps();
         });
     }
