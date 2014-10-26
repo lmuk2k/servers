@@ -27,7 +27,7 @@ Route::get('about', array('as' => 'about', function() {
 // ===============================================
 // Websites ====================================
 // ===============================================
-Route::get('websites/{id?}', function($id = null) {
+Route::get('websites/{id?}', array('as' => 'websites', function($id = null) {
     // if a website ID was passed, use that
     // if no ID, get all websites
     if ($id > 0) {
@@ -38,7 +38,7 @@ Route::get('websites/{id?}', function($id = null) {
     }
 
     return View::make('websites')->with('websites', $websites);
-});
+}));
 
 // ===============================================
 // LOGIN SECTION =================================
