@@ -10,7 +10,7 @@
     <section class="top-bar-section">
         <ul class="right">
             <li><a href="/about">About</a></li>
-            <li><a href="{{ URL::route('websites') }}">Websites</a></li>
+            <li><a href="/servers">Servers</a></li>
         </ul>
     </section>
 </nav>

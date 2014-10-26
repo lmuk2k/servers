@@ -25,20 +25,10 @@ Route::get('about', array('as' => 'about', function() {
     }));
 
 // ===============================================
-// Websites ====================================
+// Dynamic Resources =============================
 // ===============================================
-Route::get('websites/{id?}', array('as' => 'websites', function($id = null) {
-    // if a website ID was passed, use that
-    // if no ID, get all websites
-    if ($id > 0) {
-        $websites = Website::where('id', '=', $id);
-    }
-    else {
-        $websites = Website::all();
-    }
-
-    return View::make('websites')->with('websites', $websites);
-}));
+Route::resource('servers', 'ServerController');
+Route::resource('websites', 'WebsiteController');
 
 // ===============================================
 // LOGIN SECTION =================================
