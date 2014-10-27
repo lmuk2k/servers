@@ -29,7 +29,6 @@ Route::get('about', array('as' => 'about', function() {
 // ===============================================
 Route::resource('servers', 'ServerController');
 Route::resource('websites', 'WebsiteController');
-Route::resource('urls', 'UrlsController');
 
 // ===============================================
 // LOGIN SECTION =================================

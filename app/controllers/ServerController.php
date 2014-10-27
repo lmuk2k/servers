@@ -3,6 +3,13 @@
 class ServerController extends BaseController {
 
     /**
+     * Instantiate a new UserController instance.
+     */
+    public function __construct() {
+        $this->beforeFilter('auth', array('except' => array('index', 'show')));
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return Response
@@ -31,25 +38,16 @@ class ServerController extends BaseController {
      * @return Response
      */
     public function store() {
-        // validate
-        $rules = array(
-            'name' => 'required',
-            'email' => 'required|email',
-            'server_level' => 'required|numeric'
-        );
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Input::all(), Server::$rules);
 
         // process the login
         if ($validator->fails()) {
             return Redirect::to('servers/create')
-                            ->withErrors($validator)
-                            ->withInput(Input::except('password'));
+                            ->withErrors($validator);
         } else {
             // store
             $server = new Server;
             $server->name = Input::get('name');
-            $server->email = Input::get('email');
-            $server->server_level = Input::get('server_level');
             $server->save();
 
             // redirect
@@ -96,25 +94,16 @@ class ServerController extends BaseController {
      */
     public function update($id) {
         // validate
-        // read more on validation at http://laravel.com/docs/validation
-        $rules = array(
-            'name' => 'required',
-            'email' => 'required|email',
-            'server_level' => 'required|numeric'
-        );
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Input::all(), Server::$rules);
 
         // process the login
         if ($validator->fails()) {
             return Redirect::to('servers/' . $id . '/edit')
-                            ->withErrors($validator)
-                            ->withInput(Input::except('password'));
+                            ->withErrors($validator);
         } else {
             // store
             $server = Server::find($id);
             $server->name = Input::get('name');
-            $server->email = Input::get('email');
-            $server->server_level = Input::get('server_level');
             $server->save();
 
             // redirect

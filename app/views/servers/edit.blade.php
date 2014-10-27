@@ -12,8 +12,8 @@
                     <a class="navbar-brand" href="{{ URL::to('servers') }}">Nerd Alert</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ URL::to('servers') }}">View All Nerds</a></li>
-                    <li><a href="{{ URL::to('servers/create') }}">Create a Nerd</a>
+                    <li><a href="{{ URL::to('servers') }}">View All Servers</a></li>
+                    <li><a href="{{ URL::to('servers/create') }}">Create a Server</a>
                 </ul>
             </nav>
 
@@ -29,17 +29,7 @@
                 {{ Form::text('name', null, array('class' => 'form-control')) }}
             </div>
 
-            <div class="form-group">
-                {{ Form::label('email', 'Email') }}
-                {{ Form::email('email', null, array('class' => 'form-control')) }}
-            </div>
-
-            <div class="form-group">
-                {{ Form::label('server_level', 'Nerd Level') }}
-                {{ Form::select('server_level', array('0' => 'Select a Level', '1' => 'Sees Sunlight', '2' => 'Foosball Fanatic', '3' => 'Basement Dweller'), null, array('class' => 'form-control')) }}
-            </div>
-
-            {{ Form::submit('Edit the Nerd!', array('class' => 'btn btn-primary')) }}
+            {{ Form::submit('Edit the Server!', array('class' => 'btn btn-primary')) }}
 
             {{ Form::close() }}
 

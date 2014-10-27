@@ -2,12 +2,17 @@
 
 class Website extends Eloquent {
 
-    // MASS ASSIGNMENT -------------------------------------------------------
-    // define which attributes are mass assignable (for security)
-    // we only want these 3 attributes able to be filled
+    // SECURITY --------------------------------------------------------------
+    protected $guarded = array('id');
     protected $fillable = array('name', 'full_name', 'url', 'production', 'description', 'notes', 'server_id');
 
-    // DEFINE RELATIONSHIPS --------------------------------------------------
+    // VALIDATION RULES  -----------------------------------------------------
+    public static $rules = array(
+        'name' => 'required',
+        'url' => 'required'
+    );
+
+    // RELATIONSHIPS ---------------------------------------------------------
     public function server() {
         return $this->belongsTo('Server');
     }

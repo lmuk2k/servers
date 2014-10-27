@@ -19,14 +19,6 @@
 
             <h1>Showing {{ $server->name }}</h1>
 
-            <div class="jumbotron text-center">
-                <h2>{{ $server->name }}</h2>
-                <p>
-                    <strong>Email:</strong> {{ $server->email }}<br>
-                    <strong>Level:</strong> {{ $server->server_level }}
-                </p>
-            </div>
-
         </div>
     </body>
 </html>
