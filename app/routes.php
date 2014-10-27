@@ -45,35 +45,35 @@ Route::post('logout', array('uses' => 'HomeController@doLogout'));
 // ===============================================
 // ADMIN SECTION =================================
 // ===============================================
-Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
-    // main page for the admin section (app/views/admin/dashboard.blade.php)
-    Route::get('/', function() {
-        return View::make('admin.dashboard');
-    });
-
-    // subpage for the websites found at /admin/websites (app/views/admin/websites.blade.php)
-    Route::get('websites', function() {
-        return View::make('admin.websites');
-    });
-
-    // subpage to create a website found at /admin/websites/create (app/views/admin/websites-create.blade.php)
-    Route::get('websites/create', function() {
-        return View::make('admin.websites-create');
-    });
-
-    Route::post('websites/create', function() {
-        // add the website to the database
-        //$website = new Website;
-        //$website->name = Input::get('name');
-        // more stuff here
-        // $website->save();
-        // create a success message
-        Session::flash('message', 'Successfully created website');
-
-        // redirect
-        return Redirect::to('admin/websites');
-    });
-});
+//Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
+//    // main page for the admin section (app/views/admin/dashboard.blade.php)
+//    Route::get('/', function() {
+//        return View::make('admin.dashboard');
+//    });
+//
+//    // subpage for the websites found at /admin/websites (app/views/admin/websites.blade.php)
+//    Route::get('websites', function() {
+//        return View::make('admin.websites');
+//    });
+//
+//    // subpage to create a website found at /admin/websites/create (app/views/admin/websites-create.blade.php)
+//    Route::get('websites/create', function() {
+//        return View::make('admin.websites-create');
+//    });
+//
+//    Route::post('websites/create', function() {
+//        // add the website to the database
+//        //$website = new Website;
+//        //$website->name = Input::get('name');
+//        // more stuff here
+//        // $website->save();
+//        // create a success message
+//        Session::flash('message', 'Successfully created website');
+//
+//        // redirect
+//        return Redirect::to('admin/websites');
+//    });
+//});
 
 // ===============================================
 // 404 ===========================================

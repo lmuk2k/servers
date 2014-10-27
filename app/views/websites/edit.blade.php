@@ -9,20 +9,20 @@
 
             <nav class="navbar navbar-inverse">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ URL::to('servers') }}">Nerd Alert</a>
+                    <a class="navbar-brand" href="{{ URL::to('websites') }}">Nerd Alert</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ URL::to('servers') }}">View All Nerds</a></li>
-                    <li><a href="{{ URL::to('servers/create') }}">Create a Nerd</a>
+                    <li><a href="{{ URL::to('websites') }}">View All Nerds</a></li>
+                    <li><a href="{{ URL::to('websites/create') }}">Create a Nerd</a>
                 </ul>
             </nav>
 
-            <h1>Edit {{ $server->name }}</h1>
+            <h1>Edit {{ $website->name }}</h1>
 
             <!-- if there are creation errors, they will show here -->
             {{ HTML::ul($errors->all()) }}
 
-            {{ Form::model($server, array('route' => array('servers.update', $server->id), 'method' => 'PUT')) }}
+            {{ Form::model($website, array('route' => array('websites.update', $website->id), 'method' => 'PUT')) }}
 
             <div class="form-group">
                 {{ Form::label('name', 'Name') }}
@@ -35,8 +35,8 @@
             </div>
 
             <div class="form-group">
-                {{ Form::label('server_level', 'Nerd Level') }}
-                {{ Form::select('server_level', array('0' => 'Select a Level', '1' => 'Sees Sunlight', '2' => 'Foosball Fanatic', '3' => 'Basement Dweller'), null, array('class' => 'form-control')) }}
+                {{ Form::label('website_level', 'Nerd Level') }}
+                {{ Form::select('website_level', array('0' => 'Select a Level', '1' => 'Sees Sunlight', '2' => 'Foosball Fanatic', '3' => 'Basement Dweller'), null, array('class' => 'form-control')) }}
             </div>
 
             {{ Form::submit('Edit the Nerd!', array('class' => 'btn btn-primary')) }}
