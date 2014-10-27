@@ -35,12 +35,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($websites as $key => $value)
+                    @foreach($websites as $website)
                     <tr>
-                        <td>{{ $value->id }}</td>
-                        <td>{{ $value->name }}</td>
-                        <td>{{ $value->production }}</td>
-                        <td>{{ $value->server_id }}</td>
+                        <td>{{ $website->id }}</td>
+                        <td>{{ $website->name }}</td>
+                        <td>{{ $website->production }}</td>
+                        <td>
+                            <p>{{ $website->server->name }}</p>
+                        </td>
                         <!-- we will also add show, edit, and delete buttons -->
                         <td>
 
@@ -48,10 +50,10 @@
                             <!-- we will add this later since its a little more complicated than the other two buttons -->
 
                             <!-- show the website (uses the show method found at GET /websites/{id} -->
-                            <a class="btn btn-small btn-success" href="{{ URL::to('websites/' . $value->id) }}">Show this Website</a>
+                            <a class="btn btn-small btn-success" href="{{ URL::to('websites/' . $website->id) }}">Show this Website</a>
 
                             <!-- edit this website (uses the edit method found at GET /websites/{id}/edit -->
-                            <a class="btn btn-small btn-info" href="{{ URL::to('websites/' . $value->id . '/edit') }}">Edit this Website</a>
+                            <a class="btn btn-small btn-info" href="{{ URL::to('websites/' . $website->id . '/edit') }}">Edit this Website</a>
 
                         </td>
                     </tr>

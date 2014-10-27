@@ -15,12 +15,8 @@ class WebsiteController extends BaseController {
      * @return Response
      */
     public function index() {
-        // get all the websites
-        $websites = Website::all();
-
-        // load the view and pass the websites
         return View::make('websites.index')
-                        ->with('websites', $websites);
+                        ->with('websites', Website::all());
     }
 
     /**
