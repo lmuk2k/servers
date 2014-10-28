@@ -1,32 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Look! I'm CRUDding</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    </head>
-    <body>
-        <div class="container">
+@extends('layouts.default')
+@section('content')
 
-            <nav class="navbar navbar-inverse">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ URL::to('websites') }}">Website Alert</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ URL::to('websites') }}">View All Websites</a></li>
-                    <li><a href="{{ URL::to('websites/create') }}">Create a Website</a>
-                </ul>
-            </nav>
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Showing {{ $website->name }}</h1>
+    </div>
+</div>
 
-            <h1>Showing {{ $website->name }}</h1>
+<div class="jumbotron text-center">
+    <h2>{{ $website->name }}</h2>
+    <p>
+        <strong>Full Name:</strong> {{ $website->full_name }}<br>
+        <strong>URL:</strong> {{ $website->url }}<br>
+        <strong>Production:</strong> {{ $website->production }}
+    </p>
+</div>
 
-            <div class="jumbotron text-center">
-                <h2>{{ $website->name }}</h2>
-                <p>
-                    <strong>Email:</strong> {{ $website->email }}<br>
-                    <strong>Level:</strong> {{ $website->website_level }}
-                </p>
-            </div>
-
-        </div>
-    </body>
-</html>
+@stop

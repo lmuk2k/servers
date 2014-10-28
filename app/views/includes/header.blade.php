@@ -11,6 +11,7 @@
         <ul class="right">
             <li><a href="/about">About</a></li>
             <li><a href="/servers">Servers</a></li>
+            <li><a href="/websites">Websites</a></li>
         </ul>
     </section>
 </nav>

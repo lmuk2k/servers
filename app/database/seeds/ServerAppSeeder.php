@@ -47,6 +47,21 @@ class ServerAppSeeder extends Seeder {
         ));
 
         $this->command->info('Websites created');
+        
+//        $urlOUH = Website::create(array(
+//            'address' => 'http://www.ouh.nhs.uk',
+//            'server_id' => $websiteOCCG->id
+//        ));
+//        
+//        $urlOCCG = Website::create(array(
+//            'address' => 'http://www.occg.nhs.uk',
+//            'server_id' => $websiteOCCG->id
+//        ));
+//
+//        $urlEVCF = Website::create(array(
+//            'address' => 'https://evcf.oxnet.nhs.uk',
+//            'server_id' => $websiteEVCF->id
+//        ));
     }
 
 }

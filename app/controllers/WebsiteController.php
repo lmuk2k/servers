@@ -3,17 +3,20 @@
 class WebsiteController extends BaseController {
 
     /**
+     * Instantiate a new UserController instance.
+     */
+    public function __construct() {
+        $this->beforeFilter('auth', array('except' => array('index', 'show')));
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return Response
      */
     public function index() {
-        // get all the websites
-        $websites = Website::all();
-
-        // load the view and pass the websites
         return View::make('websites.index')
-                        ->with('websites', $websites);
+                        ->with('websites', Website::all());
     }
 
     /**
@@ -22,7 +25,9 @@ class WebsiteController extends BaseController {
      * @return Response
      */
     public function create() {
-        return View::make('websites.create');
+        $servers = Server::all();
+        return View::make('websites.create')
+                        ->with('servers', $servers);
     }
 
     /**
@@ -32,24 +37,21 @@ class WebsiteController extends BaseController {
      */
     public function store() {
         // validate
-        $rules = array(
-            'name' => 'required',
-            'email' => 'required|email',
-            'website_level' => 'required|numeric'
-        );
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Input::all(), Website::$rules);
 
         // process the login
         if ($validator->fails()) {
             return Redirect::to('websites/create')
-                            ->withErrors($validator)
-                            ->withInput(Input::except('password'));
+                            ->withErrors($validator);
         } else {
             // store
             $website = new Website;
             $website->name = Input::get('name');
-            $website->email = Input::get('email');
-            $website->website_level = Input::get('website_level');
+            $website->full_name = Input::get('full_name');
+            $website->url = Input::get('url');
+            $website->production = Input::get('production');
+            $website->description = Input::get('description');
+            $website->notes = Input::get('notes');
             $website->save();
 
             // redirect
@@ -96,25 +98,21 @@ class WebsiteController extends BaseController {
      */
     public function update($id) {
         // validate
-        // read more on validation at http://laravel.com/docs/validation
-        $rules = array(
-            'name' => 'required',
-            'email' => 'required|email',
-            'website_level' => 'required|numeric'
-        );
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make(Input::all(), Website::$rules);
 
         // process the login
         if ($validator->fails()) {
             return Redirect::to('websites/' . $id . '/edit')
-                            ->withErrors($validator)
-                            ->withInput(Input::except('password'));
+                            ->withErrors($validator);
         } else {
             // store
             $website = Website::find($id);
             $website->name = Input::get('name');
-            $website->email = Input::get('email');
-            $website->website_level = Input::get('website_level');
+            $website->full_name = Input::get('full_name');
+            $website->url = Input::get('url');
+            $website->production = Input::get('production');
+            $website->description = Input::get('description');
+            $website->notes = Input::get('notes');
             $website->save();
 
             // redirect

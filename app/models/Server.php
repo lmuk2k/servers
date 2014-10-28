@@ -2,8 +2,14 @@
 
 class Server extends Eloquent {
 
-    // MASS ASSIGNMENT -------------------------------------------------------
+    // SECURITY --------------------------------------------------------------
+    protected $guarded = array('id');
     protected $fillable = array('name');
+    
+    // VALIDATION RULES  -----------------------------------------------------
+    public static $rules = array(
+        'name' => 'required'
+    );
 
     // DEFINE RELATIONSHIPS --------------------------------------------------
     // each server has many websites

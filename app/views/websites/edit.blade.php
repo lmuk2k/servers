@@ -1,48 +1,49 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Look! I'm CRUDding</title>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    </head>
-    <body>
-        <div class="container">
+@extends('layouts.default')
+@section('content')
 
-            <nav class="navbar navbar-inverse">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ URL::to('websites') }}">Nerd Alert</a>
-                </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ URL::to('websites') }}">View All Nerds</a></li>
-                    <li><a href="{{ URL::to('websites/create') }}">Create a Nerd</a>
-                </ul>
-            </nav>
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Edit {{ $website->name }}</h1>
+    </div>
+</div>
 
-            <h1>Edit {{ $website->name }}</h1>
+<!-- if there are creation errors, they will show here -->
+{{ HTML::ul($errors->all()) }}
 
-            <!-- if there are creation errors, they will show here -->
-            {{ HTML::ul($errors->all()) }}
+{{ Form::model($website, array('route' => array('websites.update', $website->id), 'method' => 'PUT')) }}
 
-            {{ Form::model($website, array('route' => array('websites.update', $website->id), 'method' => 'PUT')) }}
+<div class="form-group">
+    {{ Form::label('name', 'Name') }}
+    {{ Form::text('name', null, array('class' => 'form-control')) }}
+</div>
 
-            <div class="form-group">
-                {{ Form::label('name', 'Name') }}
-                {{ Form::text('name', null, array('class' => 'form-control')) }}
-            </div>
+<div class="form-group">
+    {{ Form::label('full_name', 'Full Name') }}
+    {{ Form::text('full_name', null, array('class' => 'form-control')) }}
+</div>
 
-            <div class="form-group">
-                {{ Form::label('email', 'Email') }}
-                {{ Form::email('email', null, array('class' => 'form-control')) }}
-            </div>
+<div class="form-group">
+    {{ Form::label('url', 'URL') }}
+    {{ Form::text('url', null, array('class' => 'form-control')) }}
+</div>
 
-            <div class="form-group">
-                {{ Form::label('website_level', 'Nerd Level') }}
-                {{ Form::select('website_level', array('0' => 'Select a Level', '1' => 'Sees Sunlight', '2' => 'Foosball Fanatic', '3' => 'Basement Dweller'), null, array('class' => 'form-control')) }}
-            </div>
+<div class="form-group">
+    {{ Form::label('production', 'Production Server?') }}
+    {{ Form::checkbox('production', null, array('class' => 'form-control')) }}
+</div>
 
-            {{ Form::submit('Edit the Nerd!', array('class' => 'btn btn-primary')) }}
+<div class="form-group">
+    {{ Form::label('description', 'Description') }}
+    {{ Form::textarea('description', null, array('class' => 'form-control')) }}
+</div>
 
-            {{ Form::close() }}
+<div class="form-group">
+    {{ Form::label('notes', 'Notes') }}
+    {{ Form::textarea('notes', null, array('class' => 'form-control')) }}
+</div>
 
-        </div>
-    </body>
-</html>
+{{ Form::submit('Edit the Website!', array('class' => 'button')) }}
+
+{{ Form::close() }}
+
+@stop
