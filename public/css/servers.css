@@ -6,7 +6,10 @@
 @import url('/css/normalize.css');
 @import url('/css/foundation.css');
 
-#wrapper {
-    background: url('/img/tools.jpg') no-repeat;
-    background-size: 100%;
+body {
+    background: url('/img/tools.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
